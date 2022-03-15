@@ -1,87 +1,101 @@
-" Vim syntax file
-" Author    : Justin Donaldson (jdonaldson@gmail.com)
-"  Based extensively on a version by Ganesh Gunasegaran(me at itsgg.com)
-" Language  : hxml
+"if !exists("main_syntax")
+  "if version < 600
+    "syntax clear
+  "elseif exists("b:current_syntax")
+    "finish
+  "endif
+  "let main_syntax='hxml'
+"endif
 
-if !exists("main_syntax")
-  if version < 600
-    syntax clear
-  elseif exists("b:current_syntax")
-    finish
-  endif
-  let main_syntax='hxml'
-endif
+if exists("b:current_syntax")
+  finish
+end
 
-" Simple TODO/comment handling
-syntax keyword hxmlTodo contained TODO FIXME XXX NOTE
+let b:current_syntax = "hxml"
+
 syntax match hxmlComment "#.*$" contains=hxmlTodo
 
-" basic flags
-syntax match hxmlType "-v"
-syntax match hxmlType "-x"
-syntax match hxmlType "-D"
-
-"target/config flags
-syntax match hxmlType "--\?as3"
-syntax match hxmlType "--\?cmd"
-syntax match hxmlType "--\?cp"
-syntax match hxmlType "--\?cpp"
-syntax match hxmlType "--\?cppia"
-syntax match hxmlType "--\?java"
-syntax match hxmlType "--\?cs"
-syntax match hxmlType "--\?debug"
-syntax match hxmlType "--\?help"
+" Target
 syntax match hxmlType "--\?js"
-syntax match hxmlType "--\?lib"
 syntax match hxmlType "--\?lua"
-syntax match hxmlType "--\?main"
+syntax match hxmlType "--\?swf"
 syntax match hxmlType "--\?neko"
 syntax match hxmlType "--\?php"
+syntax match hxmlType "--\?cpp"
+syntax match hxmlType "--\?cppia"
+syntax match hxmlType "--\?cs"
+syntax match hxmlType "--\?java"
+syntax match hxmlType "--\?jvm"
 syntax match hxmlType "--\?python"
-syntax match hxmlType "--\?prompt"
-syntax match hxmlType "--\?resource"
-syntax match hxmlType "--\?swf"
-syntax match hxmlType "--\?swf-header"
-syntax match hxmlType "--\?swf-lib"
-syntax match hxmlType "--\?swf-version"
-syntax match hxmlType "--\?swf9"
-syntax match hxmlType "--\?xml"
+syntax match hxmlType "--\?hl"
+syntax match hxmlType "--\?interp"
+syntax match hxmlType "--\?run"
 
-" haxe 3.0 flags
-syntax match hxmlType "--/?dce"
-syntax match hxmlType "--/?swf-lib-extern"
-syntax match hxmlType "--/?version"
-syntax match hxmlType "--/?help-metas"
-syntax match hxmlType "--/?help-defines"
+" Compilation
+syntax match hxmlType "-p"
+syntax match hxmlType "--class-path"
+syntax match hxmlType "-m"
+syntax match hxmlType "--\?main"
+syntax match hxmlType "-L"
+syntax match hxmlType "--library"
+syntax match hxmlType "-D"
+syntax match hxmlType "--define"
+syntax match hxmlType "-r"
+syntax match hxmlType "-resource"
+syntax match hxmlType "--\?cmd"
+syntax match hxmlType "--\?remap"
+syntax match hxmlType "--\?macro"
+syntax match hxmlType "-C"
+syntax match hxmlType "---cwd"
+syntax match hxmlType "--\?haxelib-global"
 
-" advanced flags
-syntax match hxmlStatement "--connect"
-syntax match hxmlStatement "--cwd"
-syntax match hxmlStatement "--dead-code-elimination"
-syntax match hxmlStatement "--display"
-syntax match hxmlStatement "--flash-strict"
-syntax match hxmlStatement "--flash-use-stage"
-syntax match hxmlStatement "--gen-hx-classes"
-syntax match hxmlStatement "--help"
-syntax match hxmlStatement "--interp"
-syntax match hxmlStatement "--js-modern"
-syntax match hxmlStatement "--macro"
-syntax match hxmlStatement "--next"
-syntax match hxmlStatement "--no-inline"
-syntax match hxmlStatement "--no-opt"
-syntax match hxmlStatement "--no-output"
-syntax match hxmlStatement "--no-traces"
-syntax match hxmlStatement "--php-front"
-syntax match hxmlStatement "--php-lib"
-syntax match hxmlStatement "--php-prefix"
-syntax match hxmlStatement "--remap"
-syntax match hxmlStatement "--times"
-syntax match hxmlStatement "--wait"
+" Optimization
+syntax match hxmlType "--\?dce"
+syntax match hxmlType "--\?no-traces"
+syntax match hxmlType "--\?no-output"
+syntax match hxmlType "--\?no-inline"
+syntax match hxmlType "--\?no-opt"
 
+" Debug
+syntax match hxmlType "-v"
+syntax match hxmlType "--verbose"
+syntax match hxmlType "--\?debug"
+syntax match hxmlType "--prompt"
+syntax match hxmlType "--times"
 
-" Highlight them
+" Batch
+syntax match hxmlType "--next" 
+syntax match hxmlType "--each"
+
+" Services
+syntax match hxmlType "--display"
+syntax match hxmlType "--xml"
+syntax match hxmlType "--json"
+
+" Compilation Server
+syntax match hxmlType "--server-listen"
+syntax match hxmlType "--server-connect"
+syntax match hxmlType "--connect"
+
+" Target-specific
+syntax match hxmlType "--swf-version"
+syntax match hxmlType "--swf-header"
+syntax match hxmlType "--flash-strict"
+syntax match hxmlType "--swf-lib"
+syntax match hxmlType "--swf-lib-extern"
+syntax match hxmlType "--java-lib"
+syntax match hxmlType "--java-lib-extern"
+syntax match hxmlType "--net-std"
+syntax match hxmlType "--c-arg"
+
+" Miscellaneous
+syntax match hxmlType "--version"
+syntax match hxmlType "-h"
+syntax match hxmlType "--help"
+syntax match hxmlType "--help-defines"
+syntax match hxmlType "--help-metas"
+
 highlight link hxmlType Type
 highlight link hxmlStatement Statement
 highlight link hxmlComment Comment
-highlight link hxmlTodo Todo
 
